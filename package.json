@@ -1,0 +1,52 @@
+{
+  "name": "currency-cloud",
+  "description": "Currency Cloud API v2 JavaScript client",
+  "version": "0.10.0",
+  "author": "Currency Cloud",
+  "contributors": [
+    {
+      "name": "Irina Gudkova",
+      "email": "irina.gudkova@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CurrencyCloud/currencycloud-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CurrencyCloud/currencycloud-js/issues"
+  },
+  "homepage": "https://connect.currencycloud.com",
+  "keywords": [
+    "currency cloud",
+    "api",
+    "client",
+    "client library"
+  ],
+  "main": "./lib/currency-cloud",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "request-promise": "^1.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.3",
+    "nock": "^2.15.0"
+  },
+  "scripts": {
+    "lint": "jshint examples lib test",
+    "test": "mocha test/api/ --timeout 15000",
+    "pretest": "npm run lint"
+  },
+  "settings": {
+    "environment": {
+      "demo": "https://devapi.currencycloud.com",
+      "production": "https://api.currencycloud.com",
+      "uat": "https://api-uat1.ccycloud.com"
+    }
+  }
+}
