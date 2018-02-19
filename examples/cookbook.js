@@ -5,13 +5,13 @@
 
 'use strict';
 
-var currencyCloud = require('currency-cloud');
+var currencyCloud = require('../lib/currency-cloud');
 
 var login = function() {
   return currencyCloud.authentication.login({
     environment: 'demo', 
-    loginId: 'test.it@mailinator.com', 
-    apiKey: 'b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4'
+    loginId: 'development@currencycloud.com',
+    apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
   });
 };
 
