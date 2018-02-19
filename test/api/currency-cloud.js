@@ -63,7 +63,7 @@ describe('currency-cloud', function() {
           return currencyCloud.beneficiaries.create(new mock.beneficiaries.beneficiary1())
           .then(function() {
             expect(function() {
-              currencyCloud.onBehalfOf('53477161-91de-012f-e284-1e0030c7f352', function() {});
+              currencyCloud.onBehalfOf('deadbeef-dead-beef-dead-beefdeadbeef', function() {});
             }).to.throw();
             done();
           });

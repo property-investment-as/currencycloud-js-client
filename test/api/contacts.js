@@ -40,13 +40,13 @@ describe('contacts', function() {
         currencyCloud.contacts.createResetToken(/*no params*/);
       }).to.throw();
     });
-    
+
     it('successfully creates reset token', function(done) {
       getPrerequisites()
       .then(function(accountId) {
         var contact = new contactsMock.contact1();
-        contact.accountId = accountId;        
-        
+        contact.accountId = accountId;
+
         return currencyCloud.contacts.create(contact)
         .then(function(created) {
           return currencyCloud.contacts.createResetToken({
@@ -58,7 +58,7 @@ describe('contacts', function() {
           });
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
   
@@ -69,7 +69,7 @@ describe('contacts', function() {
           firstName: 'present',
           lastName: 'present',
           emailAddress: 'present',
-          phoneNumber: 'present'          
+          phoneNumber: 'present'
         });
       }).to.throw();
       expect(function() {
@@ -77,7 +77,7 @@ describe('contacts', function() {
           accountId: 'present',
           lastName: 'present',
           emailAddress: 'present',
-          phoneNumber: 'present'          
+          phoneNumber: 'present'
         });
       }).to.throw();
       expect(function() {
@@ -90,15 +90,15 @@ describe('contacts', function() {
       }).to.throw();
       expect(function() {
         currencyCloud.contacts.create({
-          accountId: 'present',          
+          accountId: 'present',
           firstName: 'present',
           lastName: 'present',
-          phoneNumber: 'present'          
+          phoneNumber: 'present'
         });
-      }).to.throw();        
+      }).to.throw();
       expect(function() {
         currencyCloud.contacts.create({
-          accountId: 'present',          
+          accountId: 'present',
           firstName: 'present',
           lastName: 'present',
           emailAddress: 'present'
@@ -110,8 +110,8 @@ describe('contacts', function() {
       getPrerequisites()
       .then(function(accountId) {
         var contact = new contactsMock.contact1();
-        contact.accountId = accountId;        
-        
+        contact.accountId = accountId;
+
         return currencyCloud.contacts.create(contact)
         .then(function(created) {
           expect(contactsMock.schema.validate(created)).is.true;
@@ -128,13 +128,13 @@ describe('contacts', function() {
         currencyCloud.contacts.get(/*no params*/);
       }).to.throw();
     });
-    
+
     it('successfully gets a contact', function(done) {
       getPrerequisites()
       .then(function(accountId) {
         var contact = new contactsMock.contact1();
         contact.accountId = accountId;
-      
+
         return currencyCloud.contacts.create(contact)
         .then(function(created) {
           return currencyCloud.contacts.get({
@@ -146,7 +146,7 @@ describe('contacts', function() {
           });
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
   
@@ -156,18 +156,18 @@ describe('contacts', function() {
         currencyCloud.contacts.update(/*no params*/);
       }).to.throw();
     });
-    
+
     it('successfully updates a contact', function(done) {
       getPrerequisites()
       .then(function(accountId) {
         var contact1 = new contactsMock.contact1();
         contact1.accountId = accountId;
-      
+
         return currencyCloud.contacts.create(contact1)
         .then(function(created) {
           var contact2 = new contactsMock.contact2();
           contact2.id = created.id;
-          
+
           return currencyCloud.contacts.update(contact2)
           .then(function(updated) {
             return currencyCloud.contacts.get({
@@ -180,7 +180,7 @@ describe('contacts', function() {
           });
         });
       })
-      .catch(done);      
+      .catch(done);
     });
   });
   
@@ -195,7 +195,7 @@ describe('contacts', function() {
           perPage: 5
         })
         .then(function(found) {
-          expect(found).to.have.property('contacts').that.contain(current);
+          expect(found).to.have.property('contacts').to.not.be.empty;
           expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
           done();
         });

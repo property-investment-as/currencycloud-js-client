@@ -76,7 +76,7 @@ describe('settlements', function() {
           perPage: 5
         })
         .then(function(found) {
-          expect(found).to.have.property('settlements').that.contain(created);
+          expect(found).to.have.property('settlements').that.deep.includes(created);
           expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
           done();
         });

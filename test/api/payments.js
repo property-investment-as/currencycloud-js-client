@@ -185,7 +185,7 @@ describe('payments', function() {
             beneficiaryId: res.beneficiaryId
           })
           .then(function(found) {
-            expect(found).to.have.property('payments').that.contain(created);
+            expect(found).to.have.property('payments').that.deep.includes(created);
             expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
             done();
           });

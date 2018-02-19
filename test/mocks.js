@@ -15,8 +15,8 @@ module.exports = {
   authentication: {
     credentials: {
       environment: 'demo', 
-      loginId: 'test.it@mailinator.com', 
-      apiKey: 'b5266326b1855443544626f188b8a234da99e1c36d91819419e17091b4f0a7f4',
+      loginId: 'development@currencycloud.com',
+      apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
       authUrl: '/v2/authenticate/api'
     }
   },
@@ -185,7 +185,7 @@ module.exports = {
 
   contacts: function() {
     var suffix = 0;
-    
+
     return {
       contact1: function() {
         return {
@@ -278,6 +278,27 @@ module.exports = {
       paymentIds: 'array',
       createdAt: 'date',
       updatedAt: 'date'  
+    })
+  },
+
+  ibans: {
+    iban1: function() {
+      return {
+        currency: 'EUR',
+      };
+    },
+    schema: new JSONschema({
+      uuid: 'UUID',
+      accountId: 'UUID',
+      ibanCode: 'string',
+      currency: 'string',
+      accountHolderName: 'string',
+      bankInstitutionName: 'string',
+      bankInstitutionAddress: 'string',
+      bankInstitutionCountry: 'string',
+      bicSwift: 'string',
+      createdAt: 'date',
+      updatedAt: 'date'
     })
   },
 

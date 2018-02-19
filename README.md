@@ -214,6 +214,20 @@ errors:
 
 This project uses [semantic versioning][semver]. You can safely express a dependency on a major version and expect all minor and patch versions to be backwards compatible.
 
+# Testing
+
+Testing of the SDK relies on the [Mocha][mocha] test framework, [Chai][chai] assertions library and [Nock][nock] HTTP mocking and expectations library. To run all test cases simply execute:
+
+``` sh
+$ npm run test
+```
+
+The SDK includes valid mocked HTTP responses in `./test/api/fixtures`. If you would like to test against the live API, please ensure there are no `js` files in that folder. The Nock library will regenerate them by recording the responses from the live run and use those next time the tests are executed.
+
+IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/mocks.js` to use your login ID and API key.
+
+If you don't have a valid login or key, you can get them [here][registration]
+
 # Copyright
 
 Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
@@ -223,4 +237,8 @@ Copyright (c) 2015-2018 Currencycloud. See [LICENSE][license] for details.
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
 [semver]:          http://semver.org/
+[mocha]:           https://mochajs.org/
+[chai]:            http://chaijs.com/
+[nock]:            https://github.com/node-nock/nock
+[registration]:    https://developer.currencycloud.com/api-register/
 [license]:         LICENSE.md

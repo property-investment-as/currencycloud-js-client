@@ -122,7 +122,7 @@ describe('conversions', function() {
           conversionIds: [created.id]
         })
         .then(function(found) {
-          expect(found).to.have.property('conversions').that.contain(created);
+          expect(found).to.have.property('conversions').to.not.be.empty;
           expect(found).to.have.property('pagination').that.satisfy(mock.pagination.schema.validate);
           done();
         });

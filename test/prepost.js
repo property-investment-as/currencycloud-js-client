@@ -29,7 +29,7 @@ module.exports = {
           var recText = 'var nock = require(\'nock\');\n';
 
           recordings.forEach(function(rec) {
-            recText = recText + decodeURIComponent(rec);
+            recText = recText + rec;
           });
           fs.writeFile(recPath, recText, done);
         } 
