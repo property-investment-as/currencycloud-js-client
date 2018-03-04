@@ -99,4 +99,18 @@ describe('reference', function() {
       .catch(done);      
     });
   });
+
+  describe('getPayerRequiredDetails', function() {
+    it('successfully gets payer required details', function(done) {
+      currencyCloud.reference.getPayerRequiredDetails({
+        payerCountry: 'GB'
+      })
+        .then(function(res) {
+          expect(res).is.not.empty;
+          expect(res).to.have.property('details').that.is.not.null;
+          done();
+        })
+        .catch(done);
+    });
+  });
 });

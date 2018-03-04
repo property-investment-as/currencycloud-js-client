@@ -34,34 +34,6 @@ describe('contacts', function() {
     });
   });
   
-  describe('createResetToken', function() {
-    it('fails if required parameters are missing', function() {
-      expect(function() {
-        currencyCloud.contacts.createResetToken(/*no params*/);
-      }).to.throw();
-    });
-
-    it('successfully creates reset token', function(done) {
-      getPrerequisites()
-      .then(function(accountId) {
-        var contact = new contactsMock.contact1();
-        contact.accountId = accountId;
-
-        return currencyCloud.contacts.create(contact)
-        .then(function(created) {
-          return currencyCloud.contacts.createResetToken({
-            loginId: created.loginId
-          })
-          .then(function(res) {
-            expect(res).is.empty;
-            done();
-          });
-        });
-      })
-      .catch(done);
-    });
-  });
-  
   describe('create', function() {
     it('fails if required parameters are missing', function() {
       expect(function() {

@@ -53,7 +53,6 @@ nock('https://devapi.currencycloud.com:443')
 
 nock('https://devapi.currencycloud.com:443')
   .get('/v2/beneficiaries/f88b3da1-8cc8-4a89-8704-a61c703968b2')
-  .query({"id":"f88b3da1-8cc8-4a89-8704-a61c703968b2"})
   .reply(404, {"error_code":"beneficiary_not_found","error_messages":{"id":[{"code":"beneficiary_not_found","message":"Beneficiary was not found for this id","params":{}}]}});
 
 nock('https://devapi.currencycloud.com:443')

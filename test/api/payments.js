@@ -240,4 +240,35 @@ describe('payments', function() {
       .catch(done);      
     });
   });
+
+  describe('getPaymentSubmission', function() {
+    it('fails if required parameters are missing', function() {
+      expect(function() {
+        currencyCloud.payments.retrieveSubmission(/*no params*/);
+      }).to.throw();
+    });
+
+    it('successfully gets a payment submission', function(done) {
+      getPrerequisites()
+        .then(function(res) {
+          var payment = new mock.payments.payment1();
+          payment.conversionId = res.conversionId;
+          payment.beneficiaryId = res.beneficiaryId;
+
+          return currencyCloud.payments.create(payment)
+            .then(function(created) {
+              return currencyCloud.payments.retrieveSubmission({
+                id: created.id
+              })
+                .then(function(gotten) {
+                  expect(gotten).to.have.property('mt103').that.is.not.null;
+                  expect(gotten).to.have.property('status').that.is.not.null;
+                  expect(gotten).to.have.property('submissionRef').that.is.not.null;
+                  done();
+                });
+            });
+        })
+        .catch(done);
+    });
+  });
 });
