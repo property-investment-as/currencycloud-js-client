@@ -444,6 +444,33 @@ module.exports = {
       completedAt: 'date'
     })
   },
+
+  transfers: {
+    transfer1: function() {
+      return {
+        sourceAccountId: 'a7117404-e150-11e6-a5af-080027a79e8f',
+        destinationAccountId: '946f2d58-e150-11e6-a5af-080027a79e8f',
+        currency: 'GBP',
+        amount: 12.5,
+        reason: 'Transfer test'
+      };
+    },
+    schema: new JSONschema({
+      id: 'UUID',
+      shortReference: 'string',
+      sourceAccountId: 'UUID',
+      destinationAccountId: 'UUID',
+      currency: 'string',
+      amount: 'number',
+      status: 'string',
+      createdAt: 'date',
+      updatedAt: 'date',
+      completedAt: 'date',
+      creatorAccountId: 'UUID',
+      creatorContactId: 'UUID',
+      reason: 'string'
+    })
+  },
   
   pagination: {
     schema: new JSONschema({
