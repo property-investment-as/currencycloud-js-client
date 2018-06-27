@@ -8,6 +8,14 @@
 'use strict';
 
 let currencyCloud = require('../lib/currency-cloud');
+const opts = {
+  retries: 3,
+  factor: 2,
+  minTimeout: Math.random() * 750,
+  maxTimeout: Math.random() * 30000 + 30000,
+  randomize: true,
+  log: true
+};
 
 let checkRate = {
   getRates: {
@@ -41,11 +49,17 @@ let checkRate = {
  */
 
 let login = () => {
-  return currencyCloud.authentication.login({
-    environment: 'demo',
-    loginId: 'development@currencycloud.com',
-    apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
-  });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.authentication.login({
+        environment: 'demo',
+        loginId: 'development@currencycloud.com',
+        apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
+      });
+    },
+    opts,
+    "currencyCloud.authentication.login"
+  );
 };
 
 /**
@@ -61,10 +75,14 @@ let login = () => {
  */
 
 let getRates  = () => {
-  return currencyCloud.rates.find(checkRate.getRates)
-    .then(function (res) {
-      console.log('getRates: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.rates.find(checkRate.getRates)
+        .then((res) => {
+          console.log('getRates: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    },
+    opts);
 };
 
 /**
@@ -80,9 +98,13 @@ let getRates  = () => {
  */
 
 let getQuote = () => {
-  return currencyCloud.rates.get(checkRate.getQuote)
-    .then(function (res) {
-      console.log('getQuote: ' + JSON.stringify(res, null, 2) + '\n');
+
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.rates.get(checkRate.getQuote)
+        .then((res) => {
+          console.log('getQuote: ' + JSON.stringify(res, null, 2) + '\n');
+        });
     });
 };
 

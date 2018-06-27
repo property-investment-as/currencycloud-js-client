@@ -8,6 +8,14 @@
 'use strict';
 
 let currencyCloud = require('../lib/currency-cloud');
+const opts = {
+  retries: 3,
+  factor: 2,
+  minTimeout: Math.random() * 750,
+  maxTimeout: Math.random() * 30000 + 30000,
+  randomize: true,
+  log: true
+};
 
 let convertFunds = {
   getQuote: {
@@ -44,11 +52,17 @@ let convertFunds = {
  */
 
 let login = () => {
-  return currencyCloud.authentication.login({
-    environment: 'demo',
-    loginId: 'development@currencycloud.com',
-    apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
-  });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.authentication.login({
+        environment: 'demo',
+        loginId: 'development@currencycloud.com',
+        apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
+      });
+    },
+    opts,
+    "currencyCloud.authentication.login"
+  );
 };
 
 /**
@@ -58,10 +72,14 @@ let login = () => {
  */
 
 let getQuote = () => {
-  return currencyCloud.rates.get(convertFunds.getQuote)
-    .then(function (res) {
-      console.log('getQuote: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.rates.get(convertFunds.getQuote)
+        .then((res) => {
+          console.log('getQuote: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    },
+    opts);
 };
 
 /**
@@ -72,12 +90,15 @@ let getQuote = () => {
  * If you’re happy with the quote, you may create the conversion by calling the Create Conversion endpoint.
  */
 
-var createConversion = () => {
-  return currencyCloud.conversions.create(convertFunds.conversion)
-    .then(function (res) {
-      console.log('createConversion: ' + JSON.stringify(res, null, 2) + '\n');
+let createConversion = () => {
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.conversions.create(convertFunds.conversion)
+        .then((res) => {
+          console.log('createConversion: ' + JSON.stringify(res, null, 2) + '\n');
+        });
     });
-};
+ };
 
 /**
  * On success, the payload of the response message will contain full details of the conversion as recorded against your

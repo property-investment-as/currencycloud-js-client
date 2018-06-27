@@ -9,6 +9,14 @@
 
 let currencyCloud = require('../lib/currency-cloud');
 const uuid4 = require('uuid/v4');
+const opts = {
+  retries: 3,
+  factor: 2,
+  minTimeout: Math.random() * 750,
+  maxTimeout: Math.random() * 30000 + 30000,
+  randomize: true,
+  log: true
+};
 
 let simplePayment = {
   getBalance: {
@@ -54,11 +62,17 @@ let simplePayment = {
  */
 
 let login = () => {
-  return currencyCloud.authentication.login({
-    environment: 'demo',
-    loginId: 'development@currencycloud.com',
-    apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
-  });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.authentication.login({
+        environment: 'demo',
+        loginId: 'development@currencycloud.com',
+        apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
+      });
+    },
+    opts,
+    "currencyCloud.authentication.login"
+  );
 };
 
 /**
@@ -67,10 +81,15 @@ let login = () => {
  */
 
 let getBalance  = () => {
-  return currencyCloud.balances.get(simplePayment.getBalance)
-    .then(function (res) {
-      console.log('getBalance: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.balances.get(simplePayment.getBalance)
+        .then((res) => {
+          console.log('getBalance: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    },
+    opts
+  );
 };
 
 /**
@@ -79,9 +98,12 @@ let getBalance  = () => {
  */
 
 let findBalances = () => {
-  return currencyCloud.balances.find()
-    .then(function (res) {
-      console.log('findBalance: ' + JSON.stringify(res, null, 2) + '\n');
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.balances.find()
+        .then((res) => {
+          console.log('findBalance: ' + JSON.stringify(res, null, 2) + '\n');
+        });
     });
 };
 
@@ -104,13 +126,19 @@ let findBalances = () => {
  */
 
 let getBeneficiaryRequiredDetails = () => {
-  return currencyCloud.reference.getBeneficiaryRequiredDetails({
-    currency: simplePayment.beneficiary.currency,
-    bankAccountCountry: simplePayment.beneficiary.bankCountry
-  })
-    .then(function (res) {
-      console.log('getBeneficiaryRequiredDetails: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.reference.getBeneficiaryRequiredDetails({
+        currency: simplePayment.beneficiary.currency,
+        bankAccountCountry: simplePayment.beneficiary.bankCountry
+      })
+        .then((res) => {
+          console.log('getBeneficiaryRequiredDetails: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    },
+    opts,
+    "currencyCloud.reference.getBeneficiaryRequiredDetails"
+  );
 };
 
 /**
@@ -126,11 +154,16 @@ let getBeneficiaryRequiredDetails = () => {
  */
 
 let createBeneficiary = () => {
-  return currencyCloud.beneficiaries.create(simplePayment.beneficiary)
-    .then(function (res) {
-      simplePayment.payment.beneficiaryId = res.id;
-      console.log('createBeneficiary: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.beneficiaries.create(simplePayment.beneficiary)
+        .then((res) => {
+          simplePayment.payment.beneficiaryId = res.id;
+          console.log('createBeneficiary: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    },
+    opts
+  );
 };
 
 /**
@@ -146,9 +179,12 @@ let createBeneficiary = () => {
  */
 
 let createPayment = () => {
-  return currencyCloud.payments.create(simplePayment.payment)
-    .then(function (res) {
-      console.log('createPayment: ' + JSON.stringify(res, null, 2) + '\n');
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.payments.create(simplePayment.payment)
+        .then((res) => {
+          console.log('createPayment: ' + JSON.stringify(res, null, 2) + '\n');
+        });
     });
 };
 

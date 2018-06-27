@@ -8,6 +8,14 @@
 'use strict';
 
 let currencyCloud = require('../lib/currency-cloud');
+const opts = {
+  retries: 3,
+  factor: 2,
+  minTimeout: Math.random() * 750,
+  maxTimeout: Math.random() * 30000 + 30000,
+  randomize: true,
+  log: true
+};
 
 let checkBalance = {
   currency: "EUR"
@@ -25,11 +33,17 @@ let checkBalance = {
  */
 
 let login = () => {
-  return currencyCloud.authentication.login({
-    environment: 'demo',
-    loginId: 'development@currencycloud.com',
-    apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
-  });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.authentication.login({
+        environment: 'demo',
+        loginId: 'development@currencycloud.com',
+        apiKey: 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
+      });
+    },
+    opts,
+    "currencyCloud.authentication.login"
+  );
 };
 
 /**
@@ -37,11 +51,16 @@ let login = () => {
  * To find out how many Euros you have, call the Get Balance endpoint, passing EUR as the third URI path parameter.
  */
 
-let getBalance  = () => {
-  return currencyCloud.balances.get(checkBalance)
-    .then(function (res) {
-      console.log('getBalance: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+let getBalance = () => {
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.balances.get(checkBalance)
+        .then((res) => {
+          console.log('getBalance: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    },
+    opts
+  );
 };
 
 /**
@@ -56,10 +75,14 @@ let getBalance  = () => {
  */
 
 let findBalances = () => {
-  return currencyCloud.balances.find()
-    .then(function (res) {
-      console.log('findBalance: ' + JSON.stringify(res, null, 2) + '\n');
-    });
+  return currencyCloud.retry(
+    () => {
+      return currencyCloud.balances.find()
+        .then((res) => {
+          console.log('findBalance: ' + JSON.stringify(res, null, 2) + '\n');
+        });
+    }
+  );
 };
 
 /**
