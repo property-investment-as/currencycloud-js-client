@@ -1,18 +1,21 @@
 language: node_js
 node_js:
-  - "12.3.1"
-  - "12.0.0"
-  - "11.15.0"
-  - "11.0.0"
-  - "10.15.3"
-  - "10.0.0"
-  - "9.11.2"
-  - "9.0.0"
-  - "8.16.0"
-  - "8.0.0"
-  - "7.10.1"
-  - "7.0.0"
-  - "6.17.1"
-  - "6.0.0"
+- 12.3.1
+- 12.0.0
+- 11.15.0
+- 11.0.0
+- 10.15.3
+- 10.0.0
+- 9.11.2
+- 9.0.0
+- 8.16.0
+- 8.0.0
+- 7.10.1
+- 7.0.0
+- 6.17.1
+- 6.0.0
 script:
-  - npm test
+- npm test
+notifications:
+  slack:
+    secure: CQko7wpSq328685DGakmcgseevXUiACOTkxWqNHgRSNw8VnBIKLtTciu1bcTbCDW6AXbC/vRJl1I/Qp/ZzL/14QQO2vIpFm3uJqsPNuILbHvn6WNY5/mhzZX0+DzIm9WxILxcJdPqyq5YUFIWK/l/JxXUQXrWDDdrxMFOvYhDm8o8/uFFXDrWShl1dOBuWkCchz1MxnB+Dd33JJSJef7gGVFL2zffvFK/nwwsrcyyM7U/fnyL26yKIEW7XApc3tiyuBIx8wOIQfWWoxdXBZlR5HuHf4YGeXx9YbnWilqIOxoj6l+Iv66JbDfsqb90+49VZvH7oa965Lia5oTBG4O5moYZuWzSBA3cP1bibMvGNNqFUhU/B95/we44WUM4G/RYibDlcnwfFxo+ozuu6n8v89q0v+kPmGrw7HOfbvEjeXOmf1xnYuZgkwup7ZZQl4NSDvRDZ00m1yyubnkQps0LFgJOgfQyMBqdyR6nBC+n668bdkxhlNAJa8Kr248HOdAlzxedNdiOJRkA9pRZQStQCZFOnHfsrnSSBL98YoiubMD0/C4eExvEadMaS7PeBX2TJhRjuJ/WHFiNOtbuScjWwG1hoJMDhNJzVYeYfQs4l3WQS0qz1TYXQ/9+BeujDhCCHuc++DulYqHddqaHDhIxa581ulWdYLbxLF6zCCOHO8=
