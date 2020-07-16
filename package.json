@@ -1,7 +1,7 @@
 {
   "name": "currency-cloud",
   "description": "Currencycloud API v2 JavaScript client",
-  "version": "3.1.2",
+  "version": "3.4.0",
   "author": "Currencycloud",
   "contributors": [
     {
@@ -34,17 +34,20 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "combined-stream": "^1.0.7",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4",
+    "combined-stream": "^1.0.8",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
     "retry": "^0.12.0",
-    "uuid": "^3.3.2"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "jshint": "^2.10.2",
-    "mocha": "^6.1.4",
-    "nock": "^10.0.6"
+    "@types/chai": "^4.2.11",
+    "jshint": "^2.11.1",
+    "mocha": "^8.0.1",
+    "@types/mocha": "^8.0.0",
+    "nock": "^13.0.2",
+    "@types/nock": "^11.1.0"
   },
   "scripts": {
     "lint": "jshint examples lib test",
