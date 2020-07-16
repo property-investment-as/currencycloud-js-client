@@ -46,8 +46,7 @@
     "jshint": "^2.11.1",
     "mocha": "^8.0.1",
     "@types/mocha": "^8.0.0",
-    "nock": "^13.0.2",
-    "@types/nock": "^11.1.0"
+    "nock": "^13.0.2"
   },
   "scripts": {
     "lint": "jshint examples lib test",
