@@ -1,7 +1,9 @@
 [![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/EAddario/js-master.svg?branch=master)](https://travis-ci.org/github/EAddario/js-master)
 
 # Currencycloud
-This is the official Javascript SDK for v2 of Currencycloud's API. Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our development team at development@currencycloud.com
+This is a **FORK** of the official Javascript SDK for v2 of Currencycloud's API. This fork includes usability enhancements.
+
+Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our development team at development@currencycloud.com
 
 ## Installation
 This library is distributed on `npm`. In order to add it as a dependency, run the following command:
@@ -281,7 +283,7 @@ IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/m
 If you don't have a valid login or key, you can get them [here][registration]
 
 # Copyright
-Copyright (c) 2015-2019 Currencycloud. See [LICENSE][license] for details.
+Copyright (c) 2015-2020 Currencycloud. See [LICENSE][license] for details.
 
 [introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
 [overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
