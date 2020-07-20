@@ -177,7 +177,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('date change', function () {
+    describe('dateChange', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
                 currencyCloud.conversions.dateChange(/*no params*/);
@@ -246,7 +246,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('profit and loss', function () {
+    describe('profitAndLoss', function () {
         it('successfully retrieve profit and/or loss of conversions', function (done) {
             currencyCloud.conversions.profitAndLoss({
                 perPage: '1'
@@ -260,7 +260,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('date change quote', function () {
+    describe('dateChangeQuote', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
                 currencyCloud.conversions.dateChangeQuote(/*no params*/);
@@ -296,7 +296,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('split preview', function () {
+    describe('splitPreview', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
                 currencyCloud.conversions.splitPreview(/*no params*/);
@@ -331,7 +331,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('split history', function () {
+    describe('splitHistory', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
                 currencyCloud.conversions.splitHistory(/*no params*/);
@@ -350,7 +350,7 @@ describe('conversions', function () {
         });
     });
 
-    describe('cancellation quote', function () {
+    describe('cancellationQuote', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
                 currencyCloud.conversions.cancellationQuote(/*no params*/);
