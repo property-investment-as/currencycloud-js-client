@@ -45,7 +45,7 @@ let login = () => {
 let create_conversion_report = () => {
     return currencyCloud.retry(
         () => {
-            return currencyCloud.reports.create_conversion_report(generate_report.conversion_report_params)
+            return currencyCloud.reports.createConversionReport(generate_report.conversion_report_params)
                 .then((res) => {
                     console.log('Conversion report: ' + JSON.stringify(res, null, 2) + '\n');
                 });
@@ -56,7 +56,7 @@ let create_conversion_report = () => {
 let create_payment_report = () => {
     return currencyCloud.retry(
         () => {
-            return currencyCloud.reports.create_payment_report(generate_report.payment_report_params)
+            return currencyCloud.reports.createPaymentReport(generate_report.payment_report_params)
                 .then((res) => {
                     console.log('Payment report: ' + JSON.stringify(res, null, 2) + '\n');
                 });
@@ -67,7 +67,7 @@ let create_payment_report = () => {
 let find_report = () => {
     return currencyCloud.retry(
         () => {
-            return currencyCloud.reports.find_report_request()
+            return currencyCloud.reports.findReportRequest()
                 .then((res) => {
                     console.log('Found reports: ' + JSON.stringify(res, null, 2) + '\n');
                 });
@@ -78,7 +78,7 @@ let find_report = () => {
 let find_report_via_id = () =>{
     return currencyCloud.retry(
         () => {
-            return currencyCloud.reports.find_report_via_id(generate_report.report_find_params)
+            return currencyCloud.reports.findReportViaId(generate_report.report_find_params)
                 .then((res) => {
                     console.log('Found report: ' + JSON.stringify(res, null, 2) + '\n');
                 });

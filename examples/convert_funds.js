@@ -16,7 +16,6 @@ const opts = {
     randomize: true,
     log: true
 };
-
 let convertFunds = {
     getQuote: {
         buyCurrency: "EUR",
@@ -114,7 +113,7 @@ let createConversion = () => {
  * expire. Send a request to the Logout endpoint to terminate an authentication token immediately.
  */
 
-let retrieve_profit_and_loss = () => {
+let retrieveProfitAndLoss = () => {
     return currencyCloud.retry(
         () => {
             return currencyCloud.conversions.profitAndLoss()
@@ -125,7 +124,7 @@ let retrieve_profit_and_loss = () => {
         opts);
 };
 
-let quote_conversion_date_change = () => {
+let quoteConversionDateChange = () => {
     return currencyCloud.retry(
         () => {
             return currencyCloud.conversions.create(convertFunds.conversion)
@@ -143,7 +142,7 @@ let quote_conversion_date_change = () => {
         opts);
 };
 
-let split_preview = () => {
+let splitPreview = () => {
     return currencyCloud.retry(
         () => {
             return currencyCloud.conversions.splitPreview({
@@ -156,7 +155,7 @@ let split_preview = () => {
         });
 };
 
-let split_history = () => {
+let splitHistory = () => {
     return currencyCloud.retry(
         () => {
             return currencyCloud.conversions.splitHistory({
@@ -168,7 +167,7 @@ let split_history = () => {
         });
 };
 
-let cancellation_quote = () => {
+let cancellationQuote = () => {
     return currencyCloud.retry(
         () => {
             return currencyCloud.conversions.create(convertFunds.conversion)
@@ -182,6 +181,7 @@ let cancellation_quote = () => {
                 });
         });
 };
+
 let logout = () => {
     return currencyCloud.authentication.logout()
         .then(() => {
@@ -192,11 +192,11 @@ let logout = () => {
 login()
     .then(getQuote)
     .then(createConversion)
-    .then(retrieve_profit_and_loss)
-    .then(quote_conversion_date_change)
-    .then(split_preview)
-    .then(split_history)
-    .then(cancellation_quote)
+    .then(retrieveProfitAndLoss)
+    .then(quoteConversionDateChange)
+    .then(splitPreview)
+    .then(splitHistory)
+    .then(cancellationQuote)
     .then(logout)
     .catch((err) => {
         if (err instanceof currencyCloud.APIerror) {
