@@ -117,7 +117,7 @@ let createConversion = () => {
 let retrieve_profit_and_loss = () => {
     return currencyCloud.retry(
         () => {
-            return currencyCloud.conversions.profit_and_loss()
+            return currencyCloud.conversions.profitAndLoss()
                 .then((res) => {
                     console.log('Your data about profit and/or loss: ' + JSON.stringify(res, null, 2) + '\n');
                 });
@@ -132,9 +132,9 @@ let quote_conversion_date_change = () => {
                 .then((res) => {
                     var newDate = new Date(res.settlementDate);
                     newDate.setDate(newDate.getDate() + 1);
-                    return currencyCloud.conversions.date_change_quote({
+                    return currencyCloud.conversions.dateChangeQuote({
                         id: res.id,
-                        new_settlement_date: newDate.toDateString()
+                        newSettlementDate: newDate.toDateString()
                     }).then((result) => {
                         console.log('Your date change quote made successfully: ' + JSON.stringify(result, null, 2) + '\n');
                     });
@@ -146,7 +146,7 @@ let quote_conversion_date_change = () => {
 let split_preview = () => {
     return currencyCloud.retry(
         () => {
-            return currencyCloud.conversions.split_preview({
+            return currencyCloud.conversions.splitPreview({
                 id: "b9a4ea57-42a7-476d-95d6-6edceec5c5a0",
                 amount: 2
             })
@@ -159,7 +159,7 @@ let split_preview = () => {
 let split_history = () => {
     return currencyCloud.retry(
         () => {
-            return currencyCloud.conversions.split_history({
+            return currencyCloud.conversions.splitHistory({
                 id: 'c805aa35-9bd3-4afe-ade2-d341e551aa16'
             })
                 .then((result) => {
@@ -173,7 +173,7 @@ let cancellation_quote = () => {
         () => {
             return currencyCloud.conversions.create(convertFunds.conversion)
                 .then((res) => {
-                    return currencyCloud.conversions.cancellation_quote({
+                    return currencyCloud.conversions.cancellationQuote({
                         id: res.id
                     })
                         .then((result) => {
