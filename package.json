@@ -1,7 +1,7 @@
 {
   "name": "currency-cloud",
   "description": "Currencycloud API v2 JavaScript client",
-  "version": "3.4.0",
+  "version": "3.4.0-ea",
   "author": "Currencycloud",
   "contributors": [
     {
@@ -30,6 +30,9 @@
     "client library"
   ],
   "main": "./lib/currency-cloud",
+  "files": [
+    "/lib"
+  ],
   "engines": {
     "node": ">=4.0.0"
   },

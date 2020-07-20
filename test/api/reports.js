@@ -24,9 +24,9 @@ describe('reports', function () {
             });
     });
 
-    describe('create_conversion_report', function () {
+    describe('createConversionReport', function () {
         it('successfully creates conversion report', function (done) {
-            currencyCloud.reports.create_conversion_report(new mock.reports.report1())
+            currencyCloud.reports.createConversionReport(new mock.reports.report1())
                 .then(function (created) {
                     expect(mock.reports.schema.validate(created)).is.true;
                     done();
@@ -35,9 +35,9 @@ describe('reports', function () {
         });
     });
 
-    describe('create_payment_report', function () {
+    describe('createPaymentReport', function () {
         it('successfully create payment report', function (done) {
-            currencyCloud.reports.create_payment_report(new mock.reports.report2())
+            currencyCloud.reports.createPaymentReport(new mock.reports.report2())
                 .then(function (created) {
                     expect(mock.reports.schema.validate(created)).is.true;
                     done();
@@ -45,9 +45,10 @@ describe('reports', function () {
                 .catch(done);
         });
     });
-    describe('find_report_requests', function () {
+
+    describe('findReportRequests', function () {
         it('successfully finds a report', function (done) {
-            currencyCloud.reports.find_report_request({
+            currencyCloud.reports.findReportRequest({
                 perPage: '1'
             })
                 .then(function (found) {
@@ -59,17 +60,17 @@ describe('reports', function () {
         });
     });
 
-    describe('find_via_id', function () {
+    describe('findReportViaId', function () {
         it('fails if required parameters are missing', function () {
             expect(function () {
-                currencyCloud.reports.find_report_via_id(/*no params*/);
+                currencyCloud.reports.findReportViaId(/*no params*/);
             }).to.throw();
         });
 
         it('successfully finds a report_request', function (done) {
-            currencyCloud.reports.create_conversion_report(new mock.reports.report1())
+            currencyCloud.reports.createConversionReport(new mock.reports.report1())
                 .then(function (created) {
-                    return currencyCloud.reports.find_report_via_id({
+                    return currencyCloud.reports.findReportViaId({
                         id: created.id
                     })
                         .then(function (gotten) {
