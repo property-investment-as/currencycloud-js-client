@@ -1,9 +1,11 @@
-[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/EAddario/js-master.svg?branch=master)](https://travis-ci.org/github/EAddario/js-master)
+[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/Addario-org/js-master.svg?branch=master)](https://travis-ci.org/github/Addario-org/js-master)
 
-# Currencycloud
-This is a **FORK** of the official Javascript SDK for v2 of Currencycloud's API. This fork includes usability enhancements.
+# Currencycloud API v2 JavaScript client
 
-Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact our development team at development@currencycloud.com
+## Version: 3.4.0-ea (FORK)
+This is a **FORK** from the official [Javascript SDK for v2 of Currencycloud's API.][original] While it tries to keep in sync with the upstream version, it does also include enhancements and modifications ranging from bugfixes to usability features.
+
+Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact their development team at development@currencycloud.com
 
 ## Installation
 This library is distributed on `npm`. In order to add it as a dependency, run the following command:
@@ -283,9 +285,11 @@ IMPORTANT: Remember to change the `loginId` and `apiKey` properties in `./test/m
 If you don't have a valid login or key, you can get them [here][registration]
 
 # Copyright
-Copyright (c) 2015-2020 Currencycloud. See [LICENSE][license] for details.
+Copyright  &copy; 2015-2020 Currencycloud. See [LICENSE][license] for details.
+Copyright &copy; modifications 2020, Ed Addario
 
 [introduction]:    https://developer.currencycloud.com/documentation/getting-started/introduction
+[original]:        https://github.com/CurrencyCloud/currencycloud-js
 [overview]:        https://developer.currencycloud.com/documentation/api-docs/overview/
 [examples]:        examples
 [request-promise]: https://www.npmjs.com/package/request-promise
