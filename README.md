@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/Addario-org/js-master.svg?branch=master)](https://travis-ci.org/github/Addario-org/js-master)
+[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/addario-org/currencycloud-js-client.svg?branch=master)](https://travis-ci.org/addario-org/currencycloud-js-client)
 
 # Currencycloud API v2 JavaScript client
 
@@ -8,9 +8,24 @@ This is a **FORK** from the official [Javascript SDK for v2 of Currencycloud's A
 Additional documentation for each API endpoint can be found at [Currencycloud API documentation][introduction]. If you have any queries or you require support, please contact their development team at development@currencycloud.com
 
 ## Installation
-This library is distributed on `npm`. In order to add it as a dependency, run the following command:
+This library is distributed on [GitHub Packages][gitpack]. In order to add it as a dependency follow these steps:
+1. In the same directory as your `package.json` file create or edit an `.npmrc` file to include a line specifying GitHub Packages URL
 ```sh
-$ npm install currency-cloud --save
+registry=https://npm.pkg.github.com/addario-org
+```
+
+2. Configure your project's `package.json` file to include the `currencycloud-js-client` dependency
+
+```sh
+"dependencies": {
+    "@addario-org/currencycloud-js-client": "3.4.0-ea"
+  }
+```
+
+3. You can then install it in the usual way
+
+```sh
+$ npm install currencycloud-js-client --save
 ```
 
 ## Supported Node versions
@@ -305,3 +320,4 @@ Copyright &copy; modifications 2020, Ed Addario
 [hof]:             HALL_OF_FAME.md
 [retry]:          https://www.npmjs.com/package/retry
 [uuid]:           https://www.npmjs.com/package/uuid
+[gitpack]:        https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages

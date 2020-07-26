@@ -1,8 +1,11 @@
 {
-  "name": "currency-cloud",
-  "description": "Currencycloud API v2 JavaScript client",
+  "name": "@addario-org/currencycloud-js-client",
+  "description": "Currencycloud API v2 JavaScript client (FORK)",
   "version": "3.4.0-ea",
   "author": "Currencycloud",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "contributors": [
     {
       "name": "Irina Gudkova",
@@ -11,17 +14,21 @@
     {
       "name": "Ed Addario",
       "email": "ed.addario@currencycloud.com"
+    },
+    {
+      "name": "Ed Addario",
+      "email": "eaddario@hotmail.com"
     }
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CurrencyCloud/currencycloud-js.git"
+    "url": "git://github.com/addario-org/currencycloud-js-client.git"
   },
   "bugs": {
-    "url": "https://github.com/CurrencyCloud/currencycloud-js/issues"
+    "url": "https://github.com/addario-org/currencycloud-js-client/issues"
   },
-  "homepage": "https://www.currencycloud.com",
+  "homepage": "https://www.addario.org",
   "keywords": [
     "currency cloud",
     "currencycloud",
