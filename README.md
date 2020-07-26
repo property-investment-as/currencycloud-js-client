@@ -1,5 +1,3 @@
-[![npm](https://img.shields.io/npm/v/currency-cloud.svg)](https://www.npmjs.com/package/currency-cloud) [![Travis](https://travis-ci.org/addario-org/currencycloud-js-client.svg?branch=master)](https://travis-ci.org/addario-org/currencycloud-js-client)
-
 [![Build Status](https://travis-ci.org/addario-org/currencycloud-js-client.svg?branch=master)](https://travis-ci.org/github/addario-org/currencycloud-js-client)
 [![Github Package](https://img.shields.io/badge/github%20package-v3.4.0--ea-brightgreen)](https://github.com/addario-org/currencycloud-js-client/packages/329885)
 [![Issues](https://img.shields.io/github/issues/addario-org/currencycloud-js-client)](https://github.com/addario-org/currencycloud-js-client/issues)
