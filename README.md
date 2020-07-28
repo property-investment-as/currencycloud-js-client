@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/addario-org/currencycloud-js-client.svg?branch=master)](https://travis-ci.org/github/addario-org/currencycloud-js-client)
 [![Github Package](https://img.shields.io/badge/github%20package-v3.4.0--ea-brightgreen)](https://github.com/addario-org/currencycloud-js-client/packages/329885)
+[![NPM Package](https://img.shields.io/badge/npm%20package-v3.4.0--ea-brightgreen)](https://www.npmjs.com/package/@addario-org/currencycloud-js-client)
 [![Issues](https://img.shields.io/github/issues/addario-org/currencycloud-js-client)](https://github.com/addario-org/currencycloud-js-client/issues)
 [![License](https://img.shields.io/github/license/addario-org/currencycloud-js-client)](https://github.com/addario-org/currencycloud-js-client/blob/master/LICENSE.md)
 [![Last Commit](https://img.shields.io/github/last-commit/addario-org/currencycloud-js-client)](https://github.com/addario-org/currencycloud-js-client/commits/master)
